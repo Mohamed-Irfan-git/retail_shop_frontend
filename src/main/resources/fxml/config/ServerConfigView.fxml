@@ -1,0 +1,108 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Button?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.retail_frontend.ui.config.ServerConfigController"
+            prefWidth="800" prefHeight="520">
+
+    <!-- Custom Title Bar -->
+    <top>
+        <fx:include source="../ui/CustomTitleBar.fxml"/>
+    </top>
+
+    <!-- Main content -->
+    <center>
+        <StackPane alignment="CENTER">
+            <VBox alignment="TOP_CENTER" spacing="20" prefWidth="800">
+
+                <!-- Card panel -->
+                <HBox alignment="CENTER_LEFT" spacing="20" styleClass="card-panel" maxWidth="800">
+
+                    <!-- Left decorative circle -->
+                    <VBox alignment="CENTER" spacing="10" style="-fx-min-width:100;">
+                        <StackPane prefWidth="64" prefHeight="64" styleClass="decorative-circle"/>
+                    </VBox>
+
+                    <!-- Right content -->
+                    <VBox alignment="TOP_LEFT" spacing="16" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="24" right="24" bottom="24" left="24"/>
+                        </padding>
+
+                        <!-- Title & subtitle -->
+                        <VBox spacing="8">
+                            <Label text="Server Configuration" styleClass="card-title-large"/>
+                            <Label text="Configure server and database settings. Test connection before saving." styleClass="card-subtitle" wrapText="true"/>
+                        </VBox>
+
+                        <!-- Form -->
+                        <GridPane hgap="14" vgap="14">
+                            <!-- Server IP -->
+                            <Label text="Server IP" GridPane.rowIndex="0" styleClass="form-label"/>
+                            <TextField fx:id="ip" promptText="e.g. 192.168.1.10" GridPane.rowIndex="1" styleClass="input-field"/>
+
+                            <!-- Server Port + SSL -->
+                            <HBox spacing="14" alignment="CENTER_LEFT" GridPane.rowIndex="2">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label text="Server Port" styleClass="form-label"/>
+                                    <TextField fx:id="port" promptText="e.g. 8080" styleClass="input-field"/>
+                                </VBox>
+                                <VBox spacing="6" alignment="CENTER_LEFT">
+                                    <Label text="Use SSL" styleClass="form-label"/>
+                                    <CheckBox fx:id="useSsl" styleClass="toggle-checkbox">
+                                        <tooltip>
+                                            <Tooltip text="Use TLS for server connection"/>
+                                        </tooltip>
+                                    </CheckBox>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Database -->
+                            <Label text="Database Type" GridPane.rowIndex="3" styleClass="form-label"/>
+                            <ComboBox fx:id="dbType" GridPane.rowIndex="4" styleClass="input-field" promptText="Select DB type"/>
+
+                            <Label text="Database / Schema Name" GridPane.rowIndex="5" styleClass="form-label"/>
+                            <TextField fx:id="dbName" promptText="e.g. retail_db" GridPane.rowIndex="6" styleClass="input-field"/>
+
+                            <Label text="Database Port" GridPane.rowIndex="7" styleClass="form-label"/>
+                            <TextField fx:id="dbPort" promptText="e.g. 5432" GridPane.rowIndex="8" styleClass="input-field"/>
+
+                            <Label text="Tip: You can provide a full JDBC connection string instead of separate fields." GridPane.rowIndex="9" styleClass="hint" wrapText="true"/>
+                        </GridPane>
+
+                        <!-- Action buttons -->
+                        <HBox spacing="12" alignment="CENTER_RIGHT" prefWidth="100">
+                            <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="8">
+                                    <Circle fx:id="statusIndicator" radius="6" styleClass="status-neutral"/>
+                                    <Label fx:id="statusLabel" text="Not tested" styleClass="status-text"/>
+                                </HBox>
+                            </HBox>
+
+                            <HBox alignment="CENTER_RIGHT" spacing="8">
+                                <ProgressIndicator fx:id="testProgress" prefWidth="20" prefHeight="20" visible="false" progress="-1"/>
+                                <Button fx:id="testBtn" text="Test" onAction="#onTest" styleClass="secondary-button"/>
+                                <Button fx:id="saveTestBtn" text="Save &amp; Test" onAction="#saveAndTest" styleClass="primary-button"/>
+                                <Button fx:id="cancelBtn" text="Cancel" onAction="#onCancel" styleClass="ghost-button"/>
+                            </HBox>
+                        </HBox>
+
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

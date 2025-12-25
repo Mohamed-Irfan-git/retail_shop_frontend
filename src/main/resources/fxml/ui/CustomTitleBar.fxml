@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.retail_frontend.ui.CustomTitleBarController"
+      fx:id="titleBar"
+      alignment="CENTER_LEFT"
+      spacing="8"
+      stylesheets="@../../css/CustomTitleBarStyle.css"
+      styleClass="custom-titlebar">
+
+    <!-- App icon -->
+    <ImageView fx:id="appIcon" fitWidth="20" fitHeight="20" pickOnBounds="true" preserveRatio="true"/>
+
+    <!-- App title -->
+    <Label fx:id="titleLabel" text="Retail ERP System" styleClass="title-label"/>
+
+    <!-- Spacer to drag -->
+    <Region fx:id="dragRegion" HBox.hgrow="ALWAYS" styleClass="drag-region"/>
+
+    <!-- Window controls -->
+    <HBox spacing="6" alignment="CENTER_RIGHT" styleClass="window-controls">
+        <Button fx:id="minimizeButton" styleClass="window-btn btn-min" focusTraversable="false">
+            <text>—</text>
+            <tooltip><Tooltip text="Minimize"/></tooltip>
+        </Button>
+
+        <Button fx:id="closeButton" styleClass="window-btn btn-close" focusTraversable="false">
+            <text>✕</text>
+            <tooltip><Tooltip text="Close"/></tooltip>
+        </Button>
+    </HBox>
+
+</HBox>

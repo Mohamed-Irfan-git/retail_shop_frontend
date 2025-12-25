@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.retail_frontend.ui.login.LoginController"
+      spacing="10"
+      alignment="CENTER"
+      prefWidth="400" prefHeight="250">
+
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="txtUsername" promptText="Username" />
+    <PasswordField fx:id="txtPassword" promptText="Password" />
+
+    <Button text="Login" onAction="#handleLogin" />
+
+</VBox>
