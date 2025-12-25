@@ -2,6 +2,7 @@ package com.example.retail_frontend.config;
 
 import java.nio.file.Path;
 
+// app config class
 public final class AppConfig {
 
     private static final ConfigRepository repo =
