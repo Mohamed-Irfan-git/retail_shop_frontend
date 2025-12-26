@@ -1,6 +1,8 @@
 package com.example.retail_frontend.util;
 
 import javafx.scene.control.Alert;
+import javafx.stage.Window;
+import javafx.stage.Stage;
 
 public final class AlertUtil {
 
@@ -18,6 +20,21 @@ public final class AlertUtil {
         Alert alert = new Alert(type);
         alert.setHeaderText(null);
         alert.setContentText(msg);
+
+        // Center alert on the current active window
+        Window owner = getCurrentWindow();
+        if (owner != null) {
+            alert.initOwner(owner);
+        }
+
         alert.showAndWait();
+    }
+
+    private static Window getCurrentWindow() {
+        return Stage.getWindows()
+                .stream()
+                .filter(Window::isShowing)
+                .findFirst()
+                .orElse(null);
     }
 }

@@ -14,15 +14,17 @@ public final class SceneNavigator {
 
     public static void init(Stage primaryStage) {
         stage = primaryStage;
+        stage.initStyle(StageStyle.UNDECORATED);
     }
+
+
 
     public static void goTo(String fxmlPath, String cssPath) {
         try {
             Parent root = FXMLLoader.load(
                     SceneNavigator.class.getResource("/fxml/" + fxmlPath)
+
             );
-
-
             Scene scene = new Scene(root);
 
             if (cssPath != null && !cssPath.isEmpty()) {
@@ -32,9 +34,10 @@ public final class SceneNavigator {
             }
 
             stage.setScene(scene);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.sizeToScene();
             stage.centerOnScreen();
+
+
 
         } catch (Exception e) {
             throw new RuntimeException("Navigation error: " + fxmlPath, e);
