@@ -18,7 +18,7 @@ public class App extends Application {
         BackendHealthChecker checker = new HttpBackendHealthChecker();
 
         if (checker.isBackendAlive()) {
-            SceneNavigator.goTo("login/LoginView.fxml",null);
+            SceneNavigator.goTo("login/LoginView.fxml","/css/LoginStyle.css");
         } else {
             SceneNavigator.goTo("config/ServerConfigView.fxml","/css/ServerConfigStyle.css");
         }

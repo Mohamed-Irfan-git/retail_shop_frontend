@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 public class ServerConfigController {
 
@@ -82,7 +83,9 @@ public class ServerConfigController {
                 if (success) {
                     setStatusSuccess();
                     AlertUtil.info("Backend connected successfully");
-                    SceneNavigator.goTo("login/LoginView.fxml", null);
+                    SceneNavigator.goTo("login/LoginView.fxml", "/css/LoginStyle.css");
+
+
                 } else {
                     setStatusError();
                     AlertUtil.error("Cannot connect to backend");

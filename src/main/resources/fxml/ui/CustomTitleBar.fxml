@@ -14,10 +14,10 @@
       styleClass="custom-titlebar">
 
     <!-- App icon -->
-    <ImageView fx:id="appIcon" fitWidth="20" fitHeight="20" pickOnBounds="true" preserveRatio="true"/>
+    <ImageView fx:id="appIcon" fitWidth="60" fitHeight="60" pickOnBounds="true" preserveRatio="true"/>
 
     <!-- App title -->
-    <Label fx:id="titleLabel" text="Retail ERP System" styleClass="title-label"/>
+    <Label fx:id="titleLabel" text="Fixora" styleClass="title-label"/>
 
     <!-- Spacer to drag -->
     <Region fx:id="dragRegion" HBox.hgrow="ALWAYS" styleClass="drag-region"/>
