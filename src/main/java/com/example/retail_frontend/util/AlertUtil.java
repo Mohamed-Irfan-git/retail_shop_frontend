@@ -1,34 +1,57 @@
 package com.example.retail_frontend.util;
 
-import javafx.scene.control.Alert;
-import javafx.stage.Window;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 public final class AlertUtil {
 
     private AlertUtil() {}
 
+    private static final Duration SHORT = Duration.seconds(3);
+    private static final Duration LONG  = Duration.seconds(4);
+
     public static void info(String msg) {
-        show(Alert.AlertType.INFORMATION, msg);
+        base("Information", msg)
+                .hideAfter(SHORT)
+                .showInformation();
+    }
+
+    public static void success(String msg) {
+        base("Success", msg)
+                .hideAfter(SHORT)
+                .showConfirm();
     }
 
     public static void error(String msg) {
-        show(Alert.AlertType.ERROR, msg);
+        base("Error", msg)
+                .hideAfter(LONG)
+                .showError();
     }
 
-    private static void show(Alert.AlertType type, String msg) {
-        Alert alert = new Alert(type);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
+    public static void warning(String msg) {
+        base("Warning", msg)
+                .hideAfter(LONG)
+                .showWarning();
+    }
 
-        // Center alert on the current active window
+
+    private static Notifications base(String title, String msg) {
+        Notifications notification = Notifications.create()
+                .title(title)
+                .text(msg)
+                .position(Pos.CENTER);   // CENTER of window
+
         Window owner = getCurrentWindow();
         if (owner != null) {
-            alert.initOwner(owner);
+            notification.owner(owner); // VERY IMPORTANT
         }
 
-        alert.showAndWait();
+        return notification;
     }
+
 
     private static Window getCurrentWindow() {
         return Stage.getWindows()
